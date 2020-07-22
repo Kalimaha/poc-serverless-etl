@@ -1,0 +1,64 @@
+openapi: 3.0.0
+info:
+  title: Wines Service
+  description: Mock upstream for the poc-serverless-etl project.
+  version: 0.0.1
+paths:
+  /wines:
+    get:
+      summary: Returns a list of wines.
+      responses:
+        '200':
+          description: A JSON array of wines
+          content:
+            application/json:
+              schema:
+                type: array
+                minItems: 10
+                maxItems: 30
+                items:
+                  type: object
+                  properties:
+                    id:
+                      type: string
+                      format: uuid
+                      example: 6ab6091f-4978-4faf-979b-1b1d33171005
+                    name:
+                      type: string
+                      enum:
+                        - Cannonau
+                        - Sangiovese
+                        - Montepulciano
+                        - Barolo
+                        - Barbera
+                        - "Nero d'Avola"
+                        - Primitivo
+                        - Valpolicella
+                        - Dolcetto
+                        - Nebbiolo
+                        - Brunello
+                      example: Cannonau
+                    rating:
+                      type: integer
+                      example: 5
+                      minimum: 1
+                      maximum: 5
+                    type:
+                      type: string
+                      enum:
+                        - red
+                        - white
+                        - sparkling
+                        - rosé
+                    rrp:
+                      type: number
+                      minimum: 9.90
+                      maximum: 99.90
+                  required:
+                    - id
+                    - name
+                    - rating
+                    - type
+                    - rrp
+              examples:
+                example-1: {}
