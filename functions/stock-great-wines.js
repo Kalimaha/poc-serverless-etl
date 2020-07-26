@@ -1,9 +1,6 @@
 const AWS = require("aws-sdk")
 
 exports.handler = function(event, context, callback) {
-  console.log(event)
-  
-  
   const s3 = s3Client()
 
   message = JSON.parse(JSON.parse(event.body).Message)
